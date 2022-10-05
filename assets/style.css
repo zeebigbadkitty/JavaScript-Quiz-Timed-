@@ -23,6 +23,8 @@ body {
 }
 .timer {
     background-color: var(--tan);
+    border: 5px solid var(--lightred);
+    text-align: center;
     height: 50px;
     width: 100px;
     float: right;
@@ -37,21 +39,31 @@ body {
     height:fit-content;
     max-width: 80%;
     background-color: var(--tan);
+    border: 2px solid var(--lightred);
     border-radius: 5em;
     padding: 30px;
     box-shadow:0 0 20px 5px var(--brown);
 }
 .answer-btns {
     display: inline-grid;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 .button {
-    background-color: var(--lightgreen)
+    display:inline-grid;
+    height:fit-content;
+    width:450px;
+    border-radius: 5em;
+    background-color: beige;
+    border: 2px solid var(--brown);
+
     
 }
 .button:hover {
-    background-color: var(--green);
+    background-color: var(--brown);
     font-weight: bold;
+    border: 5px solid var(--lightred);
 }
