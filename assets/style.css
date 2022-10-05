@@ -1,8 +1,10 @@
 :root {
-    --purple:#8f76a7;
-    --darkgold:#e4c772;
-    --lightgold:#fcf3d8;
-    --lightpink:#f9edf1;
+    --tan:#fcf9f4;
+    --brown:#d2bbad;
+    --green:#c2c5bc;
+    --lightpink:#efe0dd;
+    --lightred:#eeccc3;
+    --lightgreen:#dbded5;
 }
 * {
     margin:0;
@@ -11,16 +13,45 @@
 }
 body {
     background: #A7CFDF;
-    background: linear-gradient(to right, #A7CFDF 0%, #23538A 100%);
+    background: linear-gradient(to right, var(--lightred) 0%, var(--tan) 100%);
+    display:flex;
+    justify-content: center;
+    align-items: center;
     margin: 50px auto;
     width: 800px;
+    padding: 15px;
 }
 .timer {
-    background-color: var(--lightpink);
+    background-color: var(--tan);
     height: 50px;
-    width: 150px;
-    float:right;
+    width: 100px;
+    float: right;
+    border-radius: 5em;
+    box-shadow:0 0 20px 5px var(--lightred);
 }
-ul {
-    padding: 0;
+.question-container {
+    display:grid;
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 550px;
+    height:fit-content;
+    max-width: 80%;
+    background-color: var(--tan);
+    border-radius: 5em;
+    padding: 30px;
+    box-shadow:0 0 20px 5px var(--brown);
+}
+.answer-btns {
+    display: inline-grid;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.button {
+    background-color: var(--lightgreen)
+    
+}
+.button:hover {
+    background-color: var(--green);
+    font-weight: bold;
 }

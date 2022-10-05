@@ -17,16 +17,12 @@ THEN I can save my initials and score*/
 
 
 var questions = [
-    {What are JavaScript Data types?
-        Number
-        String
-        Boolean
-        All of the above}
-    {}
-    {}
-    {}
-    {}
-    {}
+    {What are JavaScript Data types?NumberStringBoolean*All of the above}
+    {What company developed JavaScript? IBMOracle*NetscapeMicrosoft}
+    {What symbols are used to denote comments in JavaScript? */$;}
+    {What function is used to make conversions?TypeConvertLog*Parse}
+    {Which of the follow is not a valid variable name in JavaScript? *2headers_first_headerMyHeader$mylist}
+    {Select the HTML tag that is used to link JavaScript files. <HREF><LINK><!DOCTYPE>*<SCRIPT>}
     {}
     {}
     {}
