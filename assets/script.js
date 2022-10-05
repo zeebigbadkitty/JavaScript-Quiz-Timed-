@@ -20,59 +20,105 @@ var currentQuestion
 
 var questions = [
     {question:'1.	What are JavaScript Data types?'
-answers:[{text:'Numbers', correct:false}{text:'Strings', correct:false}{text:'Boolean', correct:false}{text:'All of the Above', correct:true}]
+    answers:[
+        {text:'Numbers', correct:false}
+        {text:'Strings', correct:false}
+        {text:'Boolean', correct:false}
+        {text:'All of the Above', correct:true}]
 }
 ]
 var questions = [
     {question:'2.	What company developed JavaScript? '
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'IBM', correct:false}
+        {text:'Oracle', correct:false}
+        {text:'Netscape', correct:true}
+        {text:'Microsoft', correct:false}]
 }
 ]
 var questions = [
     {question:'3.	What symbols are used to denote comments in JavaScript? '
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'/', correct:true}
+        {text:'$', correct:false}
+        {text:'*', correct:false}
+        {text:';', correct:false}]
 }
 ]
 var questions = [
     {question:'4.	What function is used to make conversions? '
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'Type', correct:false}
+        {text:'Convert', correct:false}
+        {text:'Log', correct:false}
+        {text:'Parse', correct:true}]
 }
 ]
 var questions = [
     {question:'5.	Which of the follow is not a valid variable name in JavaScript?'
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'2headers', correct:true}
+        {text:'_first_header', correct:false}   
+        {text:'MyHeader', correct:false}
+        {text:'$myList', correct:false}]
 }
 ]
 var questions = [
     {question:'6.	Select the HTML tag that is used to link JavaScript files. '
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'<href>', correct:false}
+        {text:'<link>', correct:false}
+        {text:'<!DOCTYPE>', correct:false}
+        {text:'<script>', correct:true}]
 }
 ]
 var questions = [
     {question:'7.	Using these types of statements is how you test for a specific condition.'
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}]
 }
 ]
 var questions = [
     {question:'8.	The following method of an array adds and/or removes elements from an array.'
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}]
 }
 ]
 var questions = [
     {question:'9.	What does the acronym JSON stand for?'
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}]
 }
 ]
 var questions = [
     {question:'10.	What is the output of the following function?\nvar num = 8;\nvar num = 10;\nconsole.log(num);'
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}]
 }
 ]
 var questions = [
     {question:'What does the keyword “this” mean in JavaScript?'
-    answers:[{text:, correct:}{text:, correct:}{text:, correct:}{text:, correct:}]
+    answers:[
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}
+        {text:'', correct:}]
 }
 ]
+
+
 function startGame() { //This function starts the game, ending with the next question populating.
 randomQuestion = questions.sort()
 nextQuestion()
