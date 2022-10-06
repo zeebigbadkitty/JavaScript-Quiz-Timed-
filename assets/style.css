@@ -25,7 +25,7 @@ body {
     width: 800px;
     padding: 80px;
 }
-.timer {
+#timer {
     background-color: var(--tan);
     border: 5px solid var(--lightred);
     height: 50px;

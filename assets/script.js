@@ -1,15 +1,25 @@
-//STARTING TIME AND SCORE//
-var score = 0
-var time = 250
+//STARTING VARIABLES//
+var startingScore = 0
+var startingTime = 300
 
-var questionEl = document.querySelector('#question-line') 
-var answersEl = document.querySelector('#answer-btns')
-var timerEl = document.querySelector('.timer')
-var scoreEl = document.querySelector('.score')
+//TIMER//
+var timeEl = document.querySelector("#timer");
+var secondsLeft = 300;
+function setTime() {
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timerEl.textContent = secondsLeft;
+    if(secondsLeft === 0) {
+      clearInterval(timerInterval);
+      sendMessage();
+    }
+  }, 1000);
+}
+setTime();
 
 
  // QUESTIONS AND ANSWERS //
-var questions = [
+/*var questions = [
     {question:'1.	What are JavaScript Data types?',
     answers:[
         {text:'Numbers', answers:false}
@@ -89,28 +99,11 @@ var questions = [
 }]
 
 // GAME FUNCTIONS //
-
-
-
-function startGame() { //This function starts the game, ending with the next question populating.
-randomQuestion = questions.sort(() => Math.random() - 0.5)  //To generate a random question.
-questionEl.inn
-nextQuestion()
-
-}
-function answerSelection(){ //This function
-
-}
-function nextQuestion(){
-
-}
-
+//Start Game (And timer)
+//Display Questions (randomly)
+//Check answers
 //Score
-for (var i=0; i<questions.length; i++){ //Finish the For loop
-
-if (answers === true) //Finish the if statement
-
-}
-//Timer (When time runs out or all questions are answered)
+//Subtract time for wrong answers
+//When time runs out, game is over
 //Saving your highscore (Prompt - save to local storage)
-//High Score display
+//High score leaderboard
