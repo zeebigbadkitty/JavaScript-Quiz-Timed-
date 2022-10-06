@@ -92,3 +92,16 @@ section.question-container {
     font-weight: bold;
     border: 5px solid var(--lightred);
 }
+.correct{
+background-color:greenyellow;
+}
+.wrong{
+background-color:red;
+}
+@media screen and (max-width: 500px){
+    section.question-container {
+        min-width: 50px;
+}
+    .timer {
+        float: center;
+}
