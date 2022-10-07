@@ -4,22 +4,24 @@ var startingTime = 300
 
 //TIMER//
 var timeEl = document.querySelector("#timer");
-var secondsLeft = 300;
+var secondsLeft = 180;
 function setTime() {
   var timerInterval = setInterval(function() {
     secondsLeft--;
-    timerEl.textContent = secondsLeft;
+    timerEl.innerHTML = secondsLeft;
     if(secondsLeft === 0) {
       clearInterval(timerInterval);
       sendMessage();
     }
   }, 1000);
 }
-setTime();
+setTime(); //var body = document.body (Append to this)
 
+//START GAME AND TIMER
+//DISPLAY RANDOM QUESTION
 
  // QUESTIONS AND ANSWERS //
-/*var questions = [
+var questions = [
     {question:'1.	What are JavaScript Data types?',
     answers:[
         {text:'Numbers', answers:false}
@@ -97,13 +99,12 @@ setTime();
         {text:'It refers to the current object', answers:true}
         {text:'None of the above. ', answers:false}]
 }]
+//CHECK ANSWERS
 
-// GAME FUNCTIONS //
-//Start Game (And timer)
-//Display Questions (randomly)
-//Check answers
-//Score
-//Subtract time for wrong answers
-//When time runs out, game is over
-//Saving your highscore (Prompt - save to local storage)
-//High score leaderboard
+//ADD TO SCORE OR SUBTRACT TIME FOR WRONG ANSWER
+
+//TIME RUNS OUT, GAME IS OVER
+
+//SAVING A HIGH SCORE VIA A FORM/PROMPT 
+
+//HIGH SCORE LEADERBOARD
