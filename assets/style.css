@@ -44,64 +44,23 @@ section.question-container {
     padding: 30px;
     box-shadow:0 0 20px 5px var(--brown);
 }
-.button {
+#opt1, #opt2, #opt3, #opt4, #start-btn, #scores-btn, .return-btn {
     width:450px;
     height: 30px;
     border-radius: 5em;
     background-color: beige;
     border: 2px solid var(--brown);  
 }
-.button:hover {
+#opt1:hover, #opt2:hover, #opt3:hover, #opt4:hover,
+ #start-btn:hover, #scores-btn:hover, .return-btn:hover {
     background-color: var(--brown);
     font-weight: bold;
     border: 5px solid var(--lightred);
 }
-.start-btn{
-        width:450px;
-        height: 30px;
-        border-radius: 5em;
-        background-color: beige;
-        border: 2px solid var(--brown);
-}
-.start-btn:hover {
-        background-color: var(--brown);
-        font-weight: bold;
-        border: 5px solid var(--lightred);
-}
-.scores-btn{
-    width:450px;
-    height: 30px;
-    border-radius: 5em;
-    background-color: beige;
-    border: 2px solid var(--brown);
-}
-.scores-btn:hover {
-    background-color: var(--brown);
-    font-weight: bold;
-    border: 5px solid var(--lightred);
-}
-.return-btn{
-    width:450px;
-    height: 30px;
-    border-radius: 5em;
-    background-color: beige;
-    border: 2px solid var(--brown);
-}
-.return-btn:hover{
-    background-color: var(--brown);
-    font-weight: bold;
-    border: 5px solid var(--lightred);
-}
+
 .correct{
 background-color:greenyellow;
 }
 .wrong{
 background-color:red;
-}
-@media screen and (max-width: 500px){
-    section.question-container {
-        min-width: 50px;
-}
-    .timer {
-        float: center;
 }
