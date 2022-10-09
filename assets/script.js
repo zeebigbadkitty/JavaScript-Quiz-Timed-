@@ -153,10 +153,7 @@ currentQuestion();
 
 
 //CHECK ANSWERS
-    op1.innerText = Questions[id].text[0].text;
-    op2.innerText = Questions[id].text[1].text;
-    op3.innerText = Questions[id].text[2].text;
-    op4.innerText = Questions[id].text[3].text;
+
 
 
 //ADD TO SCORE OR SUBTRACT TIME FOR WRONG ANSWER
