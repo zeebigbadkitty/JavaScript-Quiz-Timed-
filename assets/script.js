@@ -1,4 +1,5 @@
 //STARTING VARIABLES//
+var questionLine = document.getElementById("question-line");
 var startBtn = document.getElementById("start-btn");
 var scoresBtn = document.getElementById("scores-btn");
 var currentScore = document.getElementById("current-score");
@@ -7,6 +8,7 @@ var opt1 = document.querySelector("#opt1");
 var opt2 = document.querySelector("#opt2"); 
 var opt3 = document.querySelector("#opt3"); 
 var opt4 = document.querySelector("#opt4"); 
+
 
 //TIMER//
 var timerEl = document.querySelector("#timer");
@@ -134,20 +136,24 @@ var quizQuestions = [{
 
 
 //DISPLAY RANDOM QUESTION
-var questionLine = document.getElementById("question-line");
 var questionIndex = 0
 
 function currentQuestion() {
   questionLine.textContent = quizQuestions[questionIndex].question; 
-  for(var i = 0; i<=3; i++){
-    answers[i].textContent = quizQuestions[questionIndex].answers[i].text; 
-    answers[i].addEventListener('click',function() 
-    {
+  for(var i = 0; i<=quizQuestions.length; i++){
+    opt1.textContent = quizQuestions[questionIndex].answers[0].text; 
+    opt2.textContent = quizQuestions[questionIndex].answers[1].text; 
+    opt3.textContent = quizQuestions[questionIndex].answers[2].text; 
+    opt4.textContent = quizQuestions[questionIndex].answers[3].text; 
+  //   opt1[i].textContent = quizQuestions[questionIndex].answers[i].text; 
+  //   console.log(opt1[i].textContent = quizQuestions[questionIndex].answers[i].text)
+  //   answers[i].addEventListener('click',function() 
+console.log(questionIndex)
     questionIndex = questionIndex + 1   
+    }
     currentQuestion();
-    })
   }
-}
+
 currentQuestion();
 
 
