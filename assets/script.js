@@ -139,19 +139,49 @@ var quizQuestions = [{
 var questionIndex = 0
 
 function currentQuestion() {
-  questionLine.textContent = quizQuestions[questionIndex].question; 
-  for(var i = 0; i<=quizQuestions.length; i++){
+  // for(var i = 0; i<=quizQuestions.length; i++){
+    questionLine.textContent = quizQuestions[questionIndex].question; 
     opt1.textContent = quizQuestions[questionIndex].answers[0].text; 
     opt2.textContent = quizQuestions[questionIndex].answers[1].text; 
     opt3.textContent = quizQuestions[questionIndex].answers[2].text; 
     opt4.textContent = quizQuestions[questionIndex].answers[3].text; 
   //   opt1[i].textContent = quizQuestions[questionIndex].answers[i].text; 
   //   console.log(opt1[i].textContent = quizQuestions[questionIndex].answers[i].text)
-  //   answers[i].addEventListener('click',function() 
-console.log(questionIndex)
-    questionIndex = questionIndex + 1   
-    }
-    currentQuestion();
+  // answers[i].addEventListener('click',function() 
+    opt1.addEventListener('click',function() {
+      if(quizQuestions[questionIndex].answers[0].isCorrect === false){
+        console.log('correct')
+        console.log(quizQuestions[questionIndex])
+      }
+      questionIndex++
+      currentQuestion();
+    })
+    opt2.addEventListener('click',function() {
+      if(quizQuestions[questionIndex].answers[1].isCorrect === true){
+        console.log('correct')
+        
+      }
+      questionIndex++
+      currentQuestion();
+    })
+    opt3.addEventListener('click',function() {
+      if(quizQuestions[questionIndex].answers[2].isCorrect === true){
+        console.log('correct')
+      }
+      questionIndex++
+      currentQuestion();
+    })
+    opt4.addEventListener('click',function() {
+      if(quizQuestions[questionIndex].answers[3].isCorrect === true){
+        console.log('correct')
+      }
+      questionIndex++
+      currentQuestion();
+    })
+    // questionIndex = (questionIndex + 1)
+    // }
+    // currentQuestion();
+
   }
 
 currentQuestion();
