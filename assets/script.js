@@ -12,7 +12,7 @@ var opt4 = document.querySelector("#opt4");
 
 //TIMER//
 var timerEl = document.querySelector("#timer");
-var secondsLeft = 90;
+var secondsLeft = 180;
 function setTime() {
   var timerInterval = setInterval(function () {
     secondsLeft--;
@@ -25,9 +25,9 @@ function setTime() {
 }
 setTime(); 
 
-//START GAME AND TIMER
-var startingScore = 0;
-var startingTime = 300;
+var startingScore = "🏅 Your current score:     " + 0;
+currentScore.textContent = startingScore
+
 
 // QUESTIONS AND ANSWERS ARRAY//
 var quizQuestions = [{
@@ -140,42 +140,53 @@ var questionIndex = 0
 
 function currentQuestion() {
   // for(var i = 0; i<=quizQuestions.length; i++){
+    // questionLine.textContent = quizQuestions[questionIndex].question; 
+    // for (i=0; i<=3; i++){
+    //     opt1.textContent = quizQuestions[questionIndex].answers[i].text; 
     questionLine.textContent = quizQuestions[questionIndex].question; 
     opt1.textContent = quizQuestions[questionIndex].answers[0].text; 
     opt2.textContent = quizQuestions[questionIndex].answers[1].text; 
     opt3.textContent = quizQuestions[questionIndex].answers[2].text; 
     opt4.textContent = quizQuestions[questionIndex].answers[3].text; 
-  //   opt1[i].textContent = quizQuestions[questionIndex].answers[i].text; 
-  //   console.log(opt1[i].textContent = quizQuestions[questionIndex].answers[i].text)
-  // answers[i].addEventListener('click',function() 
+
     opt1.addEventListener('click',function() {
-      if(quizQuestions[questionIndex].answers[0].isCorrect === false){
-        console.log('correct')
-        console.log(quizQuestions[questionIndex])
+      if(quizQuestions[questionIndex].answers[0].isCorrect === true){
+      startingScore ++
+      secondsLeft ++}
+      else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
+      secondsLeft --
       }
-      questionIndex++
+      questionIndex ++
       currentQuestion();
     })
     opt2.addEventListener('click',function() {
       if(quizQuestions[questionIndex].answers[1].isCorrect === true){
-        console.log('correct')
-        
-      }
-      questionIndex++
+        startingScore ++
+        secondsLeft ++}
+      else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
+        secondsLeft --
+        }
+      questionIndex ++
       currentQuestion();
     })
     opt3.addEventListener('click',function() {
       if(quizQuestions[questionIndex].answers[2].isCorrect === true){
-        console.log('correct')
-      }
-      questionIndex++
+        startingScore ++
+        secondsLeft ++}
+      else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
+        secondsLeft --
+        }
+      questionIndex ++
       currentQuestion();
     })
     opt4.addEventListener('click',function() {
       if(quizQuestions[questionIndex].answers[3].isCorrect === true){
-        console.log('correct')
-      }
-      questionIndex++
+        startingScore ++
+        secondsLeft ++}
+      else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
+        secondsLeft --
+        }
+      questionIndex ++
       currentQuestion();
     })
     // questionIndex = (questionIndex + 1)
@@ -186,13 +197,6 @@ function currentQuestion() {
 
 currentQuestion();
 
-
-
-//CHECK ANSWERS
-
-
-
-//ADD TO SCORE OR SUBTRACT TIME FOR WRONG ANSWER
 
 //TIME RUNS OUT, GAME IS OVER
 
