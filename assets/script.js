@@ -200,6 +200,11 @@ currentQuestion();
 
 //TIME RUNS OUT, GAME IS OVER
 
+
+if (secondsLeft == 0){
+  alert("Times up! Game over!")
+}
+
 //SAVING A HIGH SCORE VIA A FORM/PROMPT
 
 //HIGH SCORE LEADERBOARD
