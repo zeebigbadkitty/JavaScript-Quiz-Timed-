@@ -29,6 +29,7 @@ var startingScore = "🏅 Your current score:     " + 0;
 currentScore.textContent = startingScore
 
 
+
 // QUESTIONS AND ANSWERS ARRAY//
 var quizQuestions = [{
     question: "What are JavaScript Data types?",
@@ -137,6 +138,7 @@ var quizQuestions = [{
 
 //DISPLAY RANDOM QUESTION
 var questionIndex = 0
+var currentScore = 0
 
 function currentQuestion() {
   // for(var i = 0; i<=quizQuestions.length; i++){
@@ -151,10 +153,10 @@ function currentQuestion() {
 
     opt1.addEventListener('click',function() {
       if(quizQuestions[questionIndex].answers[0].isCorrect === true){
-      currentScore ++
-      secondsLeft ++}
+      currentScore = currentScore ++
+      secondsLeft = secondsLeft ++}
       else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-      secondsLeft -5
+      secondsLeft = secondsLeft -5
       }
       questionIndex ++
       currentQuestion();
