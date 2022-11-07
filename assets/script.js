@@ -2,7 +2,7 @@
 var questionLine = document.getElementById("question-line");
 var startBtn = document.getElementById("start-btn");
 var scoresBtn = document.getElementById("scores-btn");
-var currentScore = document.getElementById("current-score");
+var currentScore = document.querySelector("#current-score");
 var answersButton = document.getElementById("answer-btns");
 var opt1 = document.querySelector("#opt1"); 
 var opt2 = document.querySelector("#opt2"); 
@@ -151,40 +151,40 @@ function currentQuestion() {
 
     opt1.addEventListener('click',function() {
       if(quizQuestions[questionIndex].answers[0].isCorrect === true){
-      startingScore ++
+      currentScore ++
       secondsLeft ++}
       else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-      secondsLeft --
+      secondsLeft -5
       }
       questionIndex ++
       currentQuestion();
     })
     opt2.addEventListener('click',function() {
       if(quizQuestions[questionIndex].answers[1].isCorrect === true){
-        startingScore ++
+        currentScore ++
         secondsLeft ++}
       else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-        secondsLeft --
+        secondsLeft -5
         }
       questionIndex ++
       currentQuestion();
     })
     opt3.addEventListener('click',function() {
       if(quizQuestions[questionIndex].answers[2].isCorrect === true){
-        startingScore ++
+        currentScore ++
         secondsLeft ++}
       else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-        secondsLeft --
+        secondsLeft -5
         }
       questionIndex ++
       currentQuestion();
     })
     opt4.addEventListener('click',function() {
       if(quizQuestions[questionIndex].answers[3].isCorrect === true){
-        startingScore ++
+        currentScore ++
         secondsLeft ++}
       else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-        secondsLeft --
+        secondsLeft -5
         }
       questionIndex ++
       currentQuestion();
@@ -201,7 +201,7 @@ currentQuestion();
 //TIME RUNS OUT, GAME IS OVER
 
 
-if (secondsLeft == 0){
+if (secondsLeft <= 0){
   alert("Times up! Game over!")
 }
 
