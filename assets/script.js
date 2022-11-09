@@ -8,6 +8,7 @@ var opt1 = document.querySelector("#opt1");
 var opt2 = document.querySelector("#opt2");
 var opt3 = document.querySelector("#opt3");
 var opt4 = document.querySelector("#opt4");
+var scoreDisplay = document.querySelector("#score-display")
 
 //TIMER//
 var timerEl = document.querySelector("#timer");
@@ -26,7 +27,7 @@ setTime();
 
 var currentScore = 0;
 var startingScore = "🏅 Your current score:     " + currentScore;
-score.textContent = startingScore;
+score.textContent = currentScore;
 
 // QUESTIONS AND ANSWERS ARRAY//
 var quizQuestions = [
@@ -166,24 +167,38 @@ function currentQuestion() {
   // opt4.textContent = quizQuestions[questionIndex].answers[3].text;
   console.log(quizQuestions[questionIndex].answers[0]);
  
-  checkAnswer()
+  // checkAnswer()
 
 }
+
 function testCheckAnswer(){
-if (this.value===true){
-  console.log("correct")
-}else (console.log("incorrect"))
-questionIndex++
-currentQuestion()
 
+if (this.value==="true"){
+  console.log("correct")
+  currentScore = currentScore+1
+  console.log(currentScore)
+  score.textContent=currentScore
+
+  
+}else {console.log("incorrect")    
+secondsLeft -= 5;
+timerEl.textContent=secondsLeft
+
+}
+questionIndex++
+if (questionIndex===10){
+window.location.href="scores.html"  
+scoreDisplay.textContent=currentScore
+}else {currentQuestion()}
 
 
 }
+
+
 function checkAnswer(){
   opt1.addEventListener("click", function () {
     if (quizQuestions[questionIndex].answers[0].isCorrect === true) {
       currentScore++;
-      console.log(currentScore);
       score.textContent=currentScore
       // questionIndex++;
       // currentQuestion()
