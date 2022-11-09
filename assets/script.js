@@ -2,13 +2,12 @@
 var questionLine = document.getElementById("question-line");
 var startBtn = document.getElementById("start-btn");
 var scoresBtn = document.getElementById("scores-btn");
-var currentScore = document.querySelector("#current-score");
+var score = document.querySelector("#current-score");
 var answersButton = document.getElementById("answer-btns");
-var opt1 = document.querySelector("#opt1"); 
-var opt2 = document.querySelector("#opt2"); 
-var opt3 = document.querySelector("#opt3"); 
-var opt4 = document.querySelector("#opt4"); 
-
+var opt1 = document.querySelector("#opt1");
+var opt2 = document.querySelector("#opt2");
+var opt3 = document.querySelector("#opt3");
+var opt4 = document.querySelector("#opt4");
 
 //TIMER//
 var timerEl = document.querySelector("#timer");
@@ -23,15 +22,15 @@ function setTime() {
     }
   }, 1000);
 }
-setTime(); 
+setTime();
 
-var startingScore = "🏅 Your current score:     " + 0;
-currentScore.textContent = startingScore
-
-
+var currentScore = 0;
+var startingScore = "🏅 Your current score:     " + currentScore;
+score.textContent = startingScore;
 
 // QUESTIONS AND ANSWERS ARRAY//
-var quizQuestions = [{
+var quizQuestions = [
+  {
     question: "What are JavaScript Data types?",
     answers: [
       { text: "Numbers", isCorrect: false },
@@ -135,76 +134,123 @@ var quizQuestions = [{
   },
 ];
 
-
 //DISPLAY RANDOM QUESTION
-var questionIndex = 0
-var currentScore = 0
+var questionIndex = 0;
 
 function currentQuestion() {
-  // for(var i = 0; i<=quizQuestions.length; i++){
-    // questionLine.textContent = quizQuestions[questionIndex].question; 
-    // for (i=0; i<=3; i++){
-    //     opt1.textContent = quizQuestions[questionIndex].answers[i].text; 
-    questionLine.textContent = quizQuestions[questionIndex].question; 
-    opt1.textContent = quizQuestions[questionIndex].answers[0].text; 
-    opt2.textContent = quizQuestions[questionIndex].answers[1].text; 
-    opt3.textContent = quizQuestions[questionIndex].answers[2].text; 
-    opt4.textContent = quizQuestions[questionIndex].answers[3].text; 
+  console.log(questionIndex)
+  // for(let i = 0; i<=quizQuestions.length; i++){
+  questionLine.textContent = quizQuestions[questionIndex].question;
+  // for (i=0; i<=3; i++){
+  //     opt1.textContent = quizQuestions[questionIndex].answers[i].text;
+  //     opt2.textContent = quizQuestions[questionIndex].answers[i].text;
+  //     opt3.textContent = quizQuestions[questionIndex].answers[i].text;
+  //     opt4.textContent = quizQuestions[questionIndex].answers[i].text;
 
-    opt1.addEventListener('click',function() {
-      if(quizQuestions[questionIndex].answers[0].isCorrect === true){
-      currentScore = currentScore ++
-      secondsLeft = secondsLeft ++}
-      else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-      secondsLeft = secondsLeft -5
-      }
-      questionIndex ++
-      currentQuestion();
-    })
-    opt2.addEventListener('click',function() {
-      if(quizQuestions[questionIndex].answers[1].isCorrect === true){
-        currentScore ++
-        secondsLeft ++}
-      else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-        secondsLeft -5
-        }
-      questionIndex ++
-      currentQuestion();
-    })
-    opt3.addEventListener('click',function() {
-      if(quizQuestions[questionIndex].answers[2].isCorrect === true){
-        currentScore ++
-        secondsLeft ++}
-      else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-        secondsLeft -5
-        }
-      questionIndex ++
-      currentQuestion();
-    })
-    opt4.addEventListener('click',function() {
-      if(quizQuestions[questionIndex].answers[3].isCorrect === true){
-        currentScore ++
-        secondsLeft ++}
-      else if (quizQuestions[questionIndex].answers[0].isCorrect === false){
-        secondsLeft -5
-        }
-      questionIndex ++
-      currentQuestion();
-    })
-    // questionIndex = (questionIndex + 1)
-    // }
-    // currentQuestion();
+  // }}
+  answersButton.innerHTML=""
 
-  }
+  quizQuestions[questionIndex].answers.forEach(function(answer){
+  var opt = document.createElement("button")
+  opt.textContent = answer.text
+  opt.setAttribute("id", "opt")
+  opt.setAttribute("value", answer.isCorrect)
+  opt.onclick=testCheckAnswer
+  answersButton.append(opt)
+  })
+
+  // questionLine.textContent = quizQuestions[questionIndex].question;
+  // opt1.textContent = quizQuestions[questionIndex].answers[0].text;
+  // opt2.textContent = quizQuestions[questionIndex].answers[1].text;
+  // opt3.textContent = quizQuestions[questionIndex].answers[2].text;
+  // opt4.textContent = quizQuestions[questionIndex].answers[3].text;
+  console.log(quizQuestions[questionIndex].answers[0]);
+ 
+  checkAnswer()
+
+}
+function testCheckAnswer(){
+if (this.value===true){
+  console.log("correct")
+}else (console.log("incorrect"))
+questionIndex++
+currentQuestion()
+
+
+
+}
+function checkAnswer(){
+  opt1.addEventListener("click", function () {
+    if (quizQuestions[questionIndex].answers[0].isCorrect === true) {
+      currentScore++;
+      console.log(currentScore);
+      score.textContent=currentScore
+      // questionIndex++;
+      // currentQuestion()
+    } else {
+      secondsLeft -= 5;
+      timerEl.textContent=secondsLeft
+      // questionIndex++;
+      // currentQuestion();
+    }
+    questionIndex++;
+    currentQuestion();
+  });
+  opt2.addEventListener("click", function () {
+    if (quizQuestions[questionIndex].answers[1].isCorrect === true) {
+      currentScore++;
+      score.textContent=currentScore
+      // questionIndex++;
+      // currentQuestion()
+    } else {
+      secondsLeft -= 5;
+      timerEl.textContent=secondsLeft
+      // questionIndex++;
+      // currentQuestion();
+    }
+    questionIndex++;
+    currentQuestion();
+  });
+  opt3.addEventListener("click", function () {
+    if (quizQuestions[questionIndex].answers[2].isCorrect === true) {
+      currentScore++;
+      score.textContent=currentScore
+      // questionIndex++;
+      // currentQuestion()
+    } else {
+      secondsLeft -= 5;
+      timerEl.textContent=secondsLeft
+      // questionIndex++;
+      // currentQuestion();
+    }
+    questionIndex++;
+    currentQuestion();
+  });
+  opt4.addEventListener("click", function () {
+    if (quizQuestions[questionIndex].answers[3].isCorrect === true) {
+      currentScore++;
+      score.textContent=currentScore
+      // questionIndex++;
+      // currentQuestion()
+    } else {
+      secondsLeft -= 5;
+      timerEl.textContent=secondsLeft
+      // questionIndex++;
+      // currentQuestion();
+    }
+    questionIndex++;
+    currentQuestion();
+  });
+
+}
+
 
 currentQuestion();
 
-
 //TIME RUNS OUT, GAME IS OVER
 
-
-if (secondsLeft <= 0){
-  alert("Times up! Game over!")
+if (secondsLeft <= 0) {
+  alert("Times up! Game over!");
 }
 
 //SAVING A HIGH SCORE VIA A FORM/PROMPT

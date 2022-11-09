@@ -44,7 +44,7 @@ section.question-container {
     padding: 30px;
     box-shadow:0 0 20px 5px var(--brown);
 }
-#opt1, #opt2, #opt3, #opt4, #start-btn, #scores-btn, .return-btn {
+#opt, #start-btn, #scores-btn, .return-btn {
     width:450px;
     height: 30px;
     border-radius: 5em;
