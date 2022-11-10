@@ -8,22 +8,30 @@ var opt1 = document.querySelector("#opt1");
 var opt2 = document.querySelector("#opt2");
 var opt3 = document.querySelector("#opt3");
 var opt4 = document.querySelector("#opt4");
-var scoreDisplay = document.querySelector("#score-display")
+var scoreDisplay = document.querySelector("#score-display");
+var playerScore = JSON.parse(localStorage.getItem("playerScore")) || [];
+var timerInterval;
 
 //TIMER//
 var timerEl = document.querySelector("#timer");
 var secondsLeft = 180;
 function setTime() {
-  var timerInterval = setInterval(function () {
+    timerInterval = setInterval(function () {
     secondsLeft--;
     timerEl.innerHTML = secondsLeft;
-    if (secondsLeft === 0) {
+    if (secondsLeft <= 0) {
       clearInterval(timerInterval);
-      sendMessage();
+      alert("Times up! Game over!");
+      window.location.href = "scores.html";
+      scoreDisplay.textContent = currentScore;
+      endGame();
     }
   }, 1000);
 }
+console.log(window.location.href)
+if (window.location.href=="http://127.0.0.1:5501/quiz.html"){
 setTime();
+}
 
 var currentScore = 0;
 var startingScore = "🏅 Your current score:     " + currentScore;
@@ -139,7 +147,7 @@ var quizQuestions = [
 var questionIndex = 0;
 
 function currentQuestion() {
-  console.log(questionIndex)
+  console.log(questionIndex);
   // for(let i = 0; i<=quizQuestions.length; i++){
   questionLine.textContent = quizQuestions[questionIndex].question;
   // for (i=0; i<=3; i++){
@@ -149,16 +157,16 @@ function currentQuestion() {
   //     opt4.textContent = quizQuestions[questionIndex].answers[i].text;
 
   // }}
-  answersButton.innerHTML=""
+  answersButton.innerHTML = "";
 
-  quizQuestions[questionIndex].answers.forEach(function(answer){
-  var opt = document.createElement("button")
-  opt.textContent = answer.text
-  opt.setAttribute("id", "opt")
-  opt.setAttribute("value", answer.isCorrect)
-  opt.onclick=testCheckAnswer
-  answersButton.append(opt)
-  })
+  quizQuestions[questionIndex].answers.forEach(function (answer) {
+    var opt = document.createElement("button");
+    opt.textContent = answer.text;
+    opt.setAttribute("id", "opt");
+    opt.setAttribute("value", answer.isCorrect);
+    opt.onclick = testCheckAnswer;
+    answersButton.append(opt);
+  });
 
   // questionLine.textContent = quizQuestions[questionIndex].question;
   // opt1.textContent = quizQuestions[questionIndex].answers[0].text;
@@ -166,45 +174,53 @@ function currentQuestion() {
   // opt3.textContent = quizQuestions[questionIndex].answers[2].text;
   // opt4.textContent = quizQuestions[questionIndex].answers[3].text;
   console.log(quizQuestions[questionIndex].answers[0]);
- 
+
   // checkAnswer()
-
 }
 
-function testCheckAnswer(){
-
-if (this.value==="true"){
-  console.log("correct")
-  currentScore = currentScore+1
-  console.log(currentScore)
-  score.textContent=currentScore
-
-  
-}else {console.log("incorrect")    
-secondsLeft -= 5;
-timerEl.textContent=secondsLeft
-
+function testCheckAnswer() {
+  if (this.value === "true") {
+    console.log("correct");
+    currentScore = currentScore + 1;
+    console.log(currentScore);
+    score.textContent = currentScore;
+  } else {
+    console.log("incorrect");
+    secondsLeft -= 5;
+    timerEl.textContent = secondsLeft;
+  }
+  questionIndex++;
+  if (questionIndex === 10) {
+    clearInterval(timerInterval);
+    window.location.href = "scores.html";
+    scoreDisplay.textContent = currentScore;
+    endGame();
+  } else {
+    currentQuestion();
+  }
 }
-questionIndex++
-if (questionIndex===10){
-window.location.href="scores.html"  
-scoreDisplay.textContent=currentScore
-}else {currentQuestion()}
 
-
+//Endgame function
+function endGame() {
+  var playerName = prompt("Please enter your intials to save your score!");
+  var leaderboard = {
+    name: playerName,
+    score: currentScore,
+  };
+  playerScore.push(leaderboard);
+  localStorage.setItem("playerScore", JSON.stringify(playerScore));
 }
 
-
-function checkAnswer(){
+function checkAnswer() {
   opt1.addEventListener("click", function () {
     if (quizQuestions[questionIndex].answers[0].isCorrect === true) {
       currentScore++;
-      score.textContent=currentScore
+      score.textContent = currentScore;
       // questionIndex++;
       // currentQuestion()
     } else {
       secondsLeft -= 5;
-      timerEl.textContent=secondsLeft
+      timerEl.textContent = secondsLeft;
       // questionIndex++;
       // currentQuestion();
     }
@@ -214,12 +230,12 @@ function checkAnswer(){
   opt2.addEventListener("click", function () {
     if (quizQuestions[questionIndex].answers[1].isCorrect === true) {
       currentScore++;
-      score.textContent=currentScore
+      score.textContent = currentScore;
       // questionIndex++;
       // currentQuestion()
     } else {
       secondsLeft -= 5;
-      timerEl.textContent=secondsLeft
+      timerEl.textContent = secondsLeft;
       // questionIndex++;
       // currentQuestion();
     }
@@ -229,12 +245,12 @@ function checkAnswer(){
   opt3.addEventListener("click", function () {
     if (quizQuestions[questionIndex].answers[2].isCorrect === true) {
       currentScore++;
-      score.textContent=currentScore
+      score.textContent = currentScore;
       // questionIndex++;
       // currentQuestion()
     } else {
       secondsLeft -= 5;
-      timerEl.textContent=secondsLeft
+      timerEl.textContent = secondsLeft;
       // questionIndex++;
       // currentQuestion();
     }
@@ -244,30 +260,20 @@ function checkAnswer(){
   opt4.addEventListener("click", function () {
     if (quizQuestions[questionIndex].answers[3].isCorrect === true) {
       currentScore++;
-      score.textContent=currentScore
+      score.textContent = currentScore;
       // questionIndex++;
       // currentQuestion()
     } else {
       secondsLeft -= 5;
-      timerEl.textContent=secondsLeft
+      timerEl.textContent = secondsLeft;
       // questionIndex++;
       // currentQuestion();
     }
     questionIndex++;
     currentQuestion();
   });
-
 }
-
 
 currentQuestion();
 
-//TIME RUNS OUT, GAME IS OVER
-
-if (secondsLeft <= 0) {
-  alert("Times up! Game over!");
-}
-
 //SAVING A HIGH SCORE VIA A FORM/PROMPT
-
-//HIGH SCORE LEADERBOARD
