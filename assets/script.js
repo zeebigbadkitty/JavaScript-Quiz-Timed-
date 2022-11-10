@@ -9,7 +9,6 @@ var opt2 = document.querySelector("#opt2");
 var opt3 = document.querySelector("#opt3");
 var opt4 = document.querySelector("#opt4");
 var scoreDisplay = document.querySelector("#score-display");
-var playerScore = JSON.parse(localStorage.getItem("playerScore")) || [];
 var timerInterval;
 
 //TIMER//
@@ -24,12 +23,12 @@ function setTime() {
       alert("Times up! Game over!");
       window.location.href = "scores.html";
       scoreDisplay.textContent = currentScore;
-      endGame();
+      endGame()
     }
   }, 1000);
 }
 console.log(window.location.href)
-if (window.location.href=="http://127.0.0.1:5501/quiz.html"){
+if (window.location.href=="http://127.0.0.1:5501/quiz.html" || window.location.href =="https://zeebigbadkitty.github.io/JavaScript-Quiz-Timed-/quiz.html" ){
 setTime();
 }
 
@@ -192,24 +191,14 @@ function testCheckAnswer() {
   questionIndex++;
   if (questionIndex === 10) {
     clearInterval(timerInterval);
+    endGame()
     window.location.href = "scores.html";
     scoreDisplay.textContent = currentScore;
-    endGame();
   } else {
     currentQuestion();
   }
 }
 
-//Endgame function
-function endGame() {
-  var playerName = prompt("Please enter your intials to save your score!");
-  var leaderboard = {
-    name: playerName,
-    score: currentScore,
-  };
-  playerScore.push(leaderboard);
-  localStorage.setItem("playerScore", JSON.stringify(playerScore));
-}
 
 function checkAnswer() {
   opt1.addEventListener("click", function () {
@@ -276,4 +265,13 @@ function checkAnswer() {
 
 currentQuestion();
 
-//SAVING A HIGH SCORE VIA A FORM/PROMPT
+function endGame() {
+  var playerName = prompt("Please enter your intials to save your score!");
+  var leaderboard = {
+    name: playerName,
+    score: currentScore,
+  };
+  playerScore.push(leaderboard);
+  localStorage.setItem("playerScore", JSON.stringify(playerScore));
+}
+endGame()
