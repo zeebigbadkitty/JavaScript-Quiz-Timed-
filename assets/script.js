@@ -274,4 +274,3 @@ function endGame() {
   playerScore.push(leaderboard);
   localStorage.setItem("playerScore", JSON.stringify(playerScore));
 }
-endGame()
