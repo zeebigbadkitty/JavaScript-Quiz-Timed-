@@ -11,19 +11,6 @@ Click "start quiz" to be shown questions. Time will be removed for wrong answers
 - [License](#license)
 - [Example](#example)
 
-
-## Installation
-
-None.
-
-## Usage
-
-
-
-## License
-
-
-
 ## Example
 
 [Click here for an example.](https://photos.app.goo.gl/QAW7R88y9HMsYQTB6)
